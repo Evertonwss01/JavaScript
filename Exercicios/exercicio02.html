@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+
+    <style>
+        body{
+            background-color: cornflowerblue;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+
+        .box-nav{
+            background-color: gold;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        .box{
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            padding: 15px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: white;
+            border-radius: 15px;
+        }
+
+        input{
+            padding: 10px;
+            width: 50%;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 10px;
+        }
+        button{
+            padding: 10px;
+            border: none;
+            outline: none;
+            width: 50%;
+            background-color: slateblue;
+            color: white;
+            border-radius: 10px;
+        }
+        button:hover{
+            cursor: pointer;
+            transition: 0.5s;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-nav">
+        <h1>Exercicio #02</h1>
+        <h2>Everton william</h2>
+    </div>
+    <div class="box">
+        <p>Leia valores A e B. Trocar os valores entre essas variaveis.</p>
+        <input type="number" id="valor1" placeholder="Digite o primeiro valor"/>
+        <br><br>
+        <input type="number" id="valor2" placeholder="Digite o segundo valor"/>
+        <br><br>
+        <button onclick="TrocarValor()">Enviar</button>
+    </div>
+</body>
+<script>
+    function TrocarValor(){
+        var a,b,troca;
+        a = window.document.getElementById('valor1').value;
+        b = window.document.getElementById('valor2').value;
+        troca =a;
+        a = b;
+        b = troca;
+
+        alert("Novo Primeiro valor: "+a);
+        alert("Novo Segundo valor: "+b);
+    }
+
+</script>
+</html>
