@@ -1,0 +1,88 @@
+:root{
+    --color--white: white;
+    --color--red: red;
+    --color--dark1: #181818;
+    --color--dark2:#1e1e1e;
+    --color--purple1: #9333ff;
+    --color--purple2: indigo;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color--dark1);
+    color: var(--color--white);
+    display: flex;
+    justify-content: center; /*Alinhamento na Horizontal*/
+    align-items: center; /*Alinhamento na Vertical */
+    height: 100vh;
+}
+
+#principal{
+    padding: 32px;
+    background-color: var(--color--dark2);
+    border-radius: 10px;
+    min-width: 30%; /*Espacifica a largura, conforme eu for usando*/
+    overflow: auto; /*Conforme a tela diminua, ele possibilita que eu role
+    o Scrul dentro da div*/
+    /*E a opção Auto, ele redireciona automaticamente conforme o tamanho da tela*/
+}
+
+h1{
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.box form{
+    display: flex;
+    
+}
+
+.span-requerimento{
+    display: none;
+    color: var(--color--red);
+    font-size: 12px;
+    margin: 3px 0 0 12px;
+}
+
+.inputInfo{
+    padding: 10px;
+    outline: none;
+    border-radius: 10px;
+    background-color: var(--color--dark1);
+    border: 2px solid var(--color--dark1);
+    color: var(--color--white);
+    box-sizing: border-box;
+    width: 100%;
+    transition: .3s;    /*Tempo de mudança da cor nos campos*/
+}
+
+.inputInfo:focus{
+    border-color: #9333ff;
+}
+
+.box-select{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 4px;
+}
+
+button{
+    padding: 10px;
+    font-size: 15px;
+    outline: none;
+    background-color: var(--color--purple1);
+    width: 100%;
+    color: var(--color--white);
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+button:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="principal">
+        <h1>Formulario</h1>
+        <form id="formulario">
+            <div>
+                <input type="text" name="nome" class="inputInfo require" placeholder="Digite seu nome" oninput="validacaoNome()"/>
+                <span class="span-requerimento">O nome deve ter no minimo 3 Caracteres</span>
+            </div>
+            <div>
+                <input type="email" name="email" class="inputInfo require" placeholder="Digite o seu melhor email" oninput="validacaoEmail()"/>
+                <span class="span-requerimento">Digite um email válido</span>
+            </div>
+            <div>
+                <input type="password" name="senha" class="inputInfo require" placeholder="Senha" oninput="validacaoSenha()"/>
+                <span class="span-requerimento">Digite sua Senha com no minimo 8 Caracteres </span>
+            </div>
+            <div>
+                <input type="password" name="senha" class="inputInfo require" placeholder="Repita a senha" oninput="senhaIgual()"/>
+                <span class="span-requerimento">A senha devem ser Compativeis</span>
+            </div>
+            <textarea class="inputInfo" name="descrição" id="descrição" cols="25" rows="10" placeholder="Fale um pouco sobre você ..."></textarea>
+            <p>Sexo: </p>
+            <div class="box-select">
+                <input type="radio" name="genero" value="Masculino" id="mas"/>
+                <label for="mas">Masculino</label> 
+                <input type="radio" name="genero" value="Feminino" id="fem"/> 
+                <label for="fem">Feminino</label>
+                <input type="radio" name="genero" value="Outros" id="out"/> 
+                <label for="out">Outros</label>
+            </div>
+            <p>Quais suas Expariências ?</p>
+            <div class="box-select">
+                <input type="checkbox" id="html" name="conhecimentos" value="Html"/> 
+                <label for="html">Html</label>
+                <input type="checkbox" id="css" name="conhecimentos" value="Css"/> 
+                <label for="css">Css</label>
+                <input type="checkbox" id="js" name="conhecimentos" value="JavaScript"/>
+                <label for="js">JavaScript</label> 
+                <input type="checkbox" id="php" name="conhecimentos" value="PHP"/>
+                <label for="php">PHP</label> 
+            </div>
+            <br><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+<script>
+    // Primeiro pegar o fomulario //
+    const form = window.document.getElementById('formulario');
+    // Segundo pegar os campos de incersão de texto //
+    const campos = window.document.querySelectorAll('.require');
+    // Terceiro pegar os Spans //
+    const spans = window.document.querySelectorAll('.span-requerimento');
+    // Quarto pegar um email, regex para validação na internet //
+    const emailregex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    /* Vamos para as validações */
+    
+    // Criar uma função de Erro //
+    function erro(index){
+        // Abaixo mudamos a cor das bordas dos campos para Vermelho //
+        campos[index].style.border = '2px solid #e63636';
+        spans[index].style.display = 'block';
+    }
+
+    // Criar a função para tirar o Erro //
+    function removerErro(index){
+        campos[index].style.border = '';
+        spans[index].style.display = 'none';
+    }
+
+
+    // Validação do nome //
+    function validacaoNome(){
+        if(campos[0].value.length < 3){
+            //imprime o span//
+            erro(0);
+        }else{
+            // Nome validado ! //
+            removerErro(0);
+        }
+    }
+
+    // Validação de Email //
+    function validacaoEmail(){
+        if(emailregex.test(campos[1].value)){
+            removerErro(1);
+        }else{
+            erro(1);
+        }
+    }
+
+    // Validação da Senha //
+    function validacaoSenha(){
+        if(campos[2].value.length < 8){
+            erro(2);
+        }else{
+            removerErro(2);
+        }
+    }
+
+    // Validação da senha igual //
+    function senhaIgual(){
+        if((campos[3].value == campos[2].value) && (campos[3].value.length >=8)){
+            removerErro(3);
+        }else{
+            erro(3);
+        }
+    }
+
+    // Funsão para impedir que o formulario seja enviado sem nada preenchido nele //
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        validacaoNome()
+        validacaoEmail()
+        validacaoSenha()
+        senhaIgual()
+    })
+</script>
+</html>
